@@ -9,6 +9,7 @@
     --orange: #ffa500;
     --green-yellow: #cddc39;
     --pink-light: #efa2b4;
+    --pink-dark: #ff809d;
     --cyan-light: #aef1ee;
     --white: #ffffff;
     --white-alpha-40: rgba(255,255,255,0.40);
@@ -54,6 +55,43 @@ body::before {
     z-index: -1;
     opacity: 0.12;
 }
+
+/* Cursor */
+.cursor-1{
+    position: absolute;
+    top:0; left:0;
+    height:0.7rem;
+    width:0.7rem;
+    background: var(--pink-dark);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 10000;
+}
+
+.cursor-1.active {
+    height:7rem;
+    width:7rem;
+    opacity: .3;
+}
+
+.cursor-2{
+    position: absolute;
+    top:0; left:0;
+    height:3rem;
+    width:3rem;
+    border:0.07rem solid var(--main-color);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 10000;
+    transition: .3s linear;
+}
+
+.cursor-2.main.about-section.container.row.section-title{
+    display: none;
+}
+/* Cursor End */
 
 a {
     text-decoration: none;
@@ -395,3 +433,4 @@ button {
 .about-text .timeline-item h4 span{
     font-weight: 400;
 }
+
