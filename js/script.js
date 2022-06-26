@@ -32,7 +32,7 @@ document.addEventListener("click", (e) => {
         // console.log("test");
         togglePortfolioPopup();
         portfolioItemDetails();
-        
+
     }
 })
 
@@ -43,3 +43,10 @@ function togglePortfolioPopup() {
 }
 
 document.querySelector(".pp-close").addEventListener("click", togglePortfolioPopup);
+
+function portfolioItemDetails(portfolioItem) {
+    // console.log(portfolioItem);
+    document.querySelector(".pp-thumbnail img").src = portfolioItem.querySelector(".portfolio-item-thumbnail img").src;
+
+    document.querySelector(".pp-header h3").innerHTML = portfolioItem.querySelector(".portfolio-item-title").innerHTML;
+}
