@@ -1,3 +1,13 @@
+window.addEventListener("load", () => {
+    document.querySelector(".main").classList.remove("hidden");
+    document.querySelector(".home-section").classList.add("active");
+    // Page Loader
+    document.querySelector(".page-loader").classList.add("fade-out");
+    setTimeout(() => {
+        document.querySelector(".page-loader").style.display = "none";
+    }, 600);
+});
+
 
 /* Toggle Navbar */
 const navToggler = document.querySelector(".nav-toggler");
@@ -20,9 +30,13 @@ document.addEventListener("click", (e) => {
         // activate overlay to prevent multiple clicks
         document.querySelector(".overlay").classList.add("active");
         navToggler.classList.add("hide");
+        // const hash = e.target.hash;
+        // console.log(hash);
         if(e.target.classList.contains("nav-item")) {
+            // console.log("true");
             toggleNavbar();
         } else {
+            // console.log("false");
             hideSection();
             document.body.classList.add("hide-scrolling");
         }
