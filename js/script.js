@@ -1,13 +1,68 @@
+
+/* Toggle Navbar */
+const navToggler = document.querySelector(".nav-toggler");
+navToggler.addEventListener("click", () =>{
+    // console.log("hemlo");
+    hideSection();
+    toggleNavbar();
+    document.body.classList.toggle("hide-scrolling");
+});
+function hideSection() {
+    document.querySelector("section.active").classList.toggle("fade-out");
+}
+function toggleNavbar() {
+    document.querySelector(".header").classList.toggle("active");
+}
+
+/* Active Section */ 
+document.addEventListener("click", (e) => {
+    if(e.target.classList.contains("link-item") && e.target.hash !== ""){
+        // activate overlay to prevent multiple clicks
+        document.querySelector(".overlay").classList.add("active");
+        navToggler.classList.add("hide");
+        if(e.target.classList.contains("nav-item")) {
+            toggleNavbar();
+        } else {
+            hideSection();
+            document.body.classList.add("hide-scrolling");
+        }
+        setTimeout(() => {
+            document.querySelector("section.active").classList.remove("active","fade-out");
+            document.querySelector(e.target.hash).classList.add("active");
+            window.scrollTo(0,0);
+            document.body.classList.remove("hide-scrolling");
+            navToggler.classList.remove("hide");
+            document.querySelector(".overlay").classList.remove("active");
+        }, 500);
+    }
+});
+
+
+
 // Custom Cursor
 let cursor1 = document.querySelector('.cursor-1');
 let cursor2 = document.querySelector('.cursor-2');
 
 window.onmousemove = (e) =>{
-    cursor1.style.top = e.pageY + 'px';
-    cursor1.style.left = e.pageX + 'px';
-    cursor2.style.top = e.pageY + 'px';
-    cursor2.style.left = e.pageX + 'px';
+    cursor1.style.top = e.pageY - 35 + 'px';
+    cursor1.style.left = e.pageX - 168 + 'px';
+    cursor2.style.top = e.pageY - 35 + 'px';
+    cursor2.style.left = e.pageX - 168 + 'px';
 }
+
+// document.querySelectorAll('a').forEach(links =>{
+
+//     links.onmouseenter = () =>{
+//         cursor1.classList.add('active');
+//         cursor2.classList.add('active');
+//     }
+
+//     links.onmouseleave = () =>{
+//         cursor1.classList.remove('active');
+//         cursor2.classList.remove('active');
+//     }
+
+// });
 
 // About Tabs
 const tabsContainer = document.querySelector(".about-tabs"),
@@ -60,3 +115,7 @@ function portfolioItemDetails(portfolioItem) {
     
     document.querySelector(".pp-body").innerHTML = portfolioItem.querySelector(".portfolio-item-details").innerHTML;
 }
+
+
+
+
